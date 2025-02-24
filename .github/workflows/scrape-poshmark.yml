@@ -31,14 +31,14 @@ jobs:
       - name: Set up Google Sheets Credentials
         run: echo "${{ secrets.SERVICE_ACCOUNT_KEY }}" > /tmp/service_account.json
 
+      #test debug -delete
+      - name: Debug JSON File
+        run: cat /tmp/service_account.json
+        
       # Run the scraper script
       - name: Run Scraper Script
         run: |
           python poshmark_data_pull.py  
-
-      #test debug -delete
-      - name: Debug JSON File
-        run: cat /tmp/service_account.json
         
       # Optionally, you can print some debug info (useful for troubleshooting)
       - name: Debug Info
