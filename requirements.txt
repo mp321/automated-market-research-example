@@ -1,0 +1,7 @@
+pandas
+selenium
+gspread
+google-auth
+webdriver-manager
+google-auth-oauthlib
+google-auth-httplib2
