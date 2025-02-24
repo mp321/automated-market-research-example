@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from datetime import datetime
 from google.auth import default
+from google.oauth2 import service_account
 from google.auth.transport.requests import Request
 import gspread
 import json
@@ -16,7 +17,7 @@ def main():
     with open("/tmp/service_account.json") as f:
         creds_dict = json.load(f)
 
-    creds = credentials.Credentials.from_service_account_info(creds_dict)
+    creds = service_account.credentials.Credentials.from_service_account_info(creds_dict)
 
     # Refresh the credentials if expired
     if creds and creds.expired and creds.refresh_token:
