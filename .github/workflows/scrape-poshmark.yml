@@ -27,9 +27,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      #Set up Google Sheets Credentials
       - name: Set up Google Sheets Credentials
-        run: echo "${{ secrets.SERVICE_ACCOUNT_KEY }}" > /tmp/service_account.json
+        run: |
+          echo "${{ secrets.SERVICE_ACCOUNT_KEY }}" | jq . > /tmp/service_account.json
+
+
+      #Set up Google Sheets Credentials
+      # - name: Set up Google Sheets Credentials
+      #   run: echo "${{ secrets.SERVICE_ACCOUNT_KEY }}" > /tmp/service_account.json
 
       #test debug -delete
       - name: Debug JSON File
