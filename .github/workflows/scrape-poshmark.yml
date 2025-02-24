@@ -36,6 +36,10 @@ jobs:
         run: |
           python poshmark_data_pull.py  
 
+      #test debug -delete
+      - name: Debug JSON File
+        run: cat /tmp/service_account.json
+        
       # Optionally, you can print some debug info (useful for troubleshooting)
       - name: Debug Info
         run: |
