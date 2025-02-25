@@ -29,12 +29,7 @@ jobs:
 
       - name: Set up Google Sheets Credentials
         run: | 
-          echo "${{ secrets.SERVICE_ACCOUNT_KEY }}" > /tmp/service_account.json
-
-
-      #Set up Google Sheets Credentials
-      # - name: Set up Google Sheets Credentials
-      #   run: echo "${{ secrets.SERVICE_ACCOUNT_KEY }}" > /tmp/service_account.json
+          printf "%s" "${{ secrets.SERVICE_ACCOUNT_KEY }}" > /tmp/service_account.json
 
       #test debug -delete
       - name: Debug JSON File
