@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support import expected_conditions as EC
 from datetime import datetime
 from google.auth import default
 from google.oauth2 import service_account
@@ -27,7 +28,12 @@ def main():
     gc = gspread.authorize(creds)
 
     # Step 3: Open Google Sheets by name
-    spreadsheet = gc.open('testposh')  # Replace with your sheet name
+    # spreadsheet = gc.open('testposh')  # Replace with your sheet name
+    
+    # or open by ID
+    spreadsheet_id = "1YvIXyRKaCnkWUCyU33eQU5qm65da2vO8si7TDn3f-zM"
+    spreadsheet = gc.open_by_key(spreadsheet_id)
+
     worksheet = spreadsheet.worksheet('MENS_JacketsCoats100_500_JustInSold')
 
     # Step 4: Setup Chrome WebDriver
@@ -36,7 +42,7 @@ def main():
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
 
-    # Set the binary location to where Chromium is installed in Colab
+    # Set the binary location to where Chromium is installed in Colab #maybe see webdrier-manager instead
     options.binary_location = '/usr/bin/chromium-browser'
 
     # Initialize the WebDriver using SeleniumManager
@@ -47,7 +53,10 @@ def main():
     driver.get(url)
 
     # Step 6: Allow Time for JavaScript to Load
-    time.sleep(5)
+    time.sleep(10)
+    # WebDriverWait(driver, 10).until(
+    # EC.presence_of_element_located((By.CLASS_NAME, "tile__title"))
+    # )
 
     # Step 7: Extract Brand Names and Prices
     try:
