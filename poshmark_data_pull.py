@@ -24,7 +24,7 @@ def main():
         'https://www.googleapis.com/auth/drive'
     ]
     
-    creds = service_account.Credentials.from_service_account_info(creds_dict)
+    creds = service_account.Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
 
     # Refresh the credentials if expired
     if creds and creds.expired and creds.refresh_token:
