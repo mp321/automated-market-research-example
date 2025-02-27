@@ -43,7 +43,7 @@ def main():
     options.add_argument("--disable-dev-shm-usage")
 
     # Set the binary location to where Chromium is installed in Colab #maybe see webdrier-manager instead
-    options.binary_location = '/usr/bin/chromium-browser'
+    # options.binary_location = '/usr/bin/chromium-browser'
 
     # Initialize the WebDriver using SeleniumManager
     driver = webdriver.Chrome(options=options)
@@ -53,10 +53,12 @@ def main():
     driver.get(url)
 
     # Step 6: Allow Time for JavaScript to Load
-    time.sleep(10)
-    # WebDriverWait(driver, 10).until(
-    # EC.presence_of_element_located((By.CLASS_NAME, "tile__title"))
-    # )
+    # time.sleep(10)
+
+    from selenium.webdriver.support.ui import WebDriverWait
+    WebDriverWait(driver, 20).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "tile__title"))
+    )
 
     # Step 7: Extract Brand Names and Prices
     try:
