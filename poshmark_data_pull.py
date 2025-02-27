@@ -18,6 +18,12 @@ def main():
     with open("/tmp/service_account.json") as f:
         creds_dict = json.load(f)
 
+    # Define required scopes
+    SCOPES = [
+        'https://www.googleapis.com/auth/spreadsheets',
+        'https://www.googleapis.com/auth/drive'
+    ]
+    
     creds = service_account.Credentials.from_service_account_info(creds_dict)
 
     # Refresh the credentials if expired
