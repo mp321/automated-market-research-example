@@ -1,3 +1,5 @@
+# This scheduled script finds Mens Jackets/Coats $100-$500 that sold quickly after item was listed (Just-In)
+
 import time
 import pandas as pd
 from selenium import webdriver
@@ -33,10 +35,10 @@ def main():
     # Step 2: Authorize gspread with the credentials
     gc = gspread.authorize(creds)
 
-    # Step 3: Open Google Sheets by name
-    # spreadsheet = gc.open('testposh')  # Replace with your sheet name
+    # Step 3: Open Google Sheet by name
+    # spreadsheet = gc.open('x')  # Replace with your sheet name
     
-    # or open by ID
+    # Open sheet by ID
     spreadsheet_id = "1YvIXyRKaCnkWUCyU33eQU5qm65da2vO8si7TDn3f-zM"
     spreadsheet = gc.open_by_key(spreadsheet_id)
 
@@ -48,7 +50,7 @@ def main():
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
 
-    # Set the binary location to where Chromium is installed in Colab #maybe see webdrier-manager instead
+    # Set the binary location to where Chromium is installed if using Colab
     # options.binary_location = '/usr/bin/chromium-browser'
 
     # Initialize the WebDriver using SeleniumManager
@@ -58,7 +60,7 @@ def main():
     url = "https://poshmark.com/category/Men-Jackets_&_Coats?sort_by=added_desc&price%5B%5D=100-250&price%5B%5D=250-500&availability=sold_out"
     driver.get(url)
 
-    # Step 6: Allow Time for JavaScript to Load
+    # Step 6: Wait to load page
     # time.sleep(10)
 
     from selenium.webdriver.support.ui import WebDriverWait
