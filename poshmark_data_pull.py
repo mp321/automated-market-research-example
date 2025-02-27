@@ -18,7 +18,7 @@ def main():
     with open("/tmp/service_account.json") as f:
         creds_dict = json.load(f)
 
-    creds = service_account.credentials.Credentials.from_service_account_info(creds_dict)
+    creds = service_account.Credentials.from_service_account_info(creds_dict)
 
     # Refresh the credentials if expired
     if creds and creds.expired and creds.refresh_token:
