@@ -27,8 +27,8 @@ jobs:
         run: |
           echo "${{ secrets.SERVICE_ACCT_KEY }}" | base64 --decode > /tmp/service_account.json
 
-      - name: Debug JSON File
-        run: cat /tmp/service_account.json  # Remove this in production
+      # - name: Debug JSON File
+      #   run: cat /tmp/service_account.json  # Remove this in production
 
       - name: Check JSON Permissions
         run: ls -l /tmp/service_account.json
