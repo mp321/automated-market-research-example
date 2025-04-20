@@ -39,7 +39,7 @@ def main():
     # spreadsheet = gc.open('x')  # Replace with your sheet name
     
     # Open sheet by ID
-    spreadsheet_id = "1YvIXyRKaCnkWUCyU33eQU5qm65da2vO8si7TDn3f-zM"
+    spreadsheet_id = "<>" #update with spreadsheet ID
     spreadsheet = gc.open_by_key(spreadsheet_id)
 
     worksheet = spreadsheet.worksheet('MENS_JacketsCoats100_500_JustInSold')
