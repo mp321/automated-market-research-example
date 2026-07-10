@@ -1,8 +1,11 @@
 # Automated Market Research (Poshmark example)
 Developed by Michael Phipps, 2025
 
-A Python-based automation tool designed to extract market data on scheduled (daily) basis, updating to google sheet automatically each iteration - all automated (example used here was a specific Poshmark page). Setup with gitaction cron provided automated updates to sheets file with authenticated auth
-e.g: pulled top mens coat brands selling each day, when coat sold between $100-$500.
+A Python and github actions-based method to extract market data on a scheduled (daily) cadence. Script pulls data and updates (appends to previous data) via connected google sheet, entirely automated. 
+
+Automated updates to sheets required authentication.
+
+Example: Pulling top mens coat brands sold each day, when coat sold between $100-$500 (example output in posh_test.ipynb).
 
 ## Project Structure
 
